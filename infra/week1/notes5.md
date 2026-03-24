@@ -31,3 +31,5 @@ testA:$y$j9T$KbRzdFz4EFkqdhGHPfkVz1$l6OOIr0/92GgvHzWALQbUyJ8FlIH3u01s/wLvKOlzyA:
 sshd:*:20524:0:99999:7:::  
 ```  
 ## 알게된 것  
+ACL은 라우터에서 거는 Access list만 생각했는데 파일에도 소유자 관리를 위한 ACL이 존재하는걸 알게됨  
+passwd에서 비밀번호를 저장했다는건 알고있었지만 요즘은 다 x로 표시가 되고 진짜 암호화된 비밀번호는 shadow에 들어가는걸 처음 알았다.
