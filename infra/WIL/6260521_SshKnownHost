@@ -1,0 +1,25 @@
+# 6-2. SSH Known_hosts와 ProxyJump
+
+## 실행   
+1달만에 이론 정리...  
+그동안 GSMSV관리도 하고 Flooding 개발도 하고 남는시간엔 전기기능사 실기 연습하느라 이론 쓸 시간이 많지 않았다   
+앞으로도 계속 적을거같아서 이거 하고 바로 모니터링으로 넘어가던지 해야할듯...  
+
+## 결과     
+  
+## 알게된 것  
+
+## ProxyJump
+Bastion 서버를 경유하여 내부 서버로 ssh를 시도하는 방식  
+명령어로 사용할때는 -J 플래그 뒤에 Bastion 서버 ssh 정보만 넣으면 되지만 내부적으로는 Bastion 서버에 접속하고 내부 서버까지 터널을 뚫는다  
+EC2 접속시에도 이런 방식을 채택하는듯, GSMSV에도 적용할만해보임
+
+### SSH agent forward 
+위에서 말한 ProxyJump와 같이 쓰이는 private key를 메모리에 저장하는 기능
+Client에게 private key를 노출시키지 않고 Bastion 서버를 경유해 목적지로 가게 하기 위해 사용된다  
+
+## Known_hosts, authorized_keys 
+Known_hosts: 다른 서버에 접속할 때 해당 서버의 public key를 등록하는 파일, 만약 해당 파일에 등록되있는 public key와 실제 public key가 다를 경우 ssh는 이를 보안적 위협으로 생각하고 접속을 차단시킨다  
+authorized_keys: 클라이언트에서 내 서버로 접속할 당 클라이언트의 public key가 저장되는 파일  
+
+authorized_keys에 공개키가 없더라도 로그인은 가능하나 ssh key 방식이 아닌 password login만 가능하다
